@@ -52,6 +52,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="col-md-6 col-md-offset-5">{{ $clients->links() }}</div>
                         </div>
                     </div>
                 </div>

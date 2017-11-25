@@ -16,7 +16,7 @@ class GenerateMenus
     public function handle($request, Closure $next)
     {
         \Menu::make('nav', function ($menu) {
-            $menu->add('Home', 'home');
+            $menu->add('Início', 'home');
             $menu->add('Produtos', 'products');
         });
 

@@ -72,6 +72,12 @@
             </div>
         </nav>
 
+        <div class="container">
+            <div class="row">
+                {!! Breadcrumbs::render(Route::currentRouteName(), Route::getCurrentRoute()) !!}
+            </div>
+        </div>
+
         @if (Session::has('success'))
             <div class="container">
                 <div class="row">

@@ -10,37 +10,54 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('rents.update', ['id' => $rent->id]) }}">
                         {{ csrf_field() }}
                         <input name="_method" type="hidden" value="PATCH">
-                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">Descrição</label>
+                        <div class="form-group{{ $errors->has('client_id') ? ' has-error' : '' }}">
+                            <label for="client_id" class="col-md-4 control-label">Cliente</label>
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') ? old('description') : $rent->description }}" required autofocus>
-                                @if ($errors->has('description'))
+                                <select class="form-control" name="client_id">
+                                    @foreach($clients as $client)
+                                        <option value="{{  $client->id }}" {{ (old('client_id') AND $client->id == old('client_id') OR (!old('client_id') AND $client->id == $rent->client_id)) ? 'selected' : '' }}>{{ $client->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div><div class="form-group{{ $errors->has('start_at') ? ' has-error' : '' }}">
+                            <label for="start_at" class="col-md-4 control-label">Início</label>
+                            <div class="col-md-6">
+                                <input id="start_at" type="text" class="form-control" name="start_at" value="{{ old('start_at') ? old('start_at') : $rent->start_at->format('d/mY') }}" autocomplete="off">
+                                @if ($errors->has('start_at'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
+                                        <strong>{{ $errors->first('start_at') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('size') ? ' has-error' : '' }}">
-                            <label for="size" class="col-md-4 control-label">Tamanho</label>
+                        <div class="form-group{{ $errors->has('end_at') ? ' has-error' : '' }}">
+                            <label for="end_at" class="col-md-4 control-label">Fim</label>
                             <div class="col-md-6">
-                                <input id="size" type="number" class="form-control" name="size" value="{{ old('size') ? old('size') : $rent->size }}" required autofocus>
-                                @if ($errors->has('size'))
+                                <input id="end_at" type="text" class="form-control" name="end_at" value="{{ old('end_at') ? old('end_at') : $rent->end_at->format('d/mY') }}" autocomplete="off">
+                                @if ($errors->has('end_at'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('size') }}</strong>
+                                        <strong>{{ $errors->first('end_at') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                            <label for="price" class="col-md-4 control-label">Preço</label>
-                            <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" name="price" value="{{ old('price') ? old('price') : $rent->price }}" required autofocus>
-                                @if ($errors->has('price'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('price') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="form-group {{ $errors->has('products') ? 'has-error' : '' }}">
+                            <div class="col-md-offset-1">
+                                <label for="required_documents">Produtos</label>
+                                <p class="text-muted">Selecione produtos do pedido</p>
+                                <div id="products" class="col-md-12">
+                                    @foreach($products as $product)
+                                        <label class="checkbox col-md-5">
+                                            <input type="checkbox" id="{{ $product->id }}" name="products[]" value="{{ $product->id }}" @if( (is_array(old('products')) AND in_array($product->id, old('products'))) OR in_array($product->id, $rent->products()->pluck('product_id')->toArray())) checked @endif>
+                                            {{ $product->description }}
+                                        </label>
+                                    @endforeach
+                                    @if ($errors->has('products'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('products') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -57,3 +74,18 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $("#start_at").datepicker({
+                format: 'dd/mm/yyyy',
+                language: 'pt-BR'
+            }).mask('00/00/0000');
+
+            $("#end_at").datepicker({
+                format: 'dd/mm/yyyy',
+                language: 'pt-BR'
+            }).mask('00/00/0000');
+        });
+    </script>
+@endpush

@@ -83,7 +83,10 @@ class RentController extends Controller
      */
     public function edit(Rent $rent)
     {
-        return view('rents.edit', compact('rent'));
+        $clients = Client::all();
+        $products = Product::all();
+
+        return view('rents.edit', compact('rent', 'clients', 'products'));
     }
 
     /**
@@ -96,7 +99,18 @@ class RentController extends Controller
     public function update(Request $request, Rent $rent)
     {
         try {
-            $rent->update($request->all());
+            // trata os dados da requisicao
+            $attributes = $request->all();
+            $attributes['start_at'] = Carbon::createFromFormat('d/m/Y', $request->start_at);
+            $attributes['end_at'] = Carbon::createFromFormat('d/m/Y', $request->end_at);
+
+            // atualiza pedido
+            $rent->update($attributes);
+
+            // relaciona os produtos com o pedido
+            $products = is_null($attributes['products']) ? [] : $attributes['products'];
+            $rent->products()->sync($products);
+
             return redirect()->route('rents.show', ['id' => $rent->id])->with('success', ('updated'));
         } catch (\Exception $e) {
             return redirect()->route('rents.show', ['id' => $rent->id])->with('error', $e->getMessage());

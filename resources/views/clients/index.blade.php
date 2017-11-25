@@ -30,7 +30,7 @@
                                 @foreach($clients as $client)
                                     <tr>
                                         <td>{{ $client->id  }}</td>
-                                        <td>{{ $client->namespace }}</td>
+                                        <td>{{ $client->name }}</td>
                                         <td>
                                             <a href="{{  route('clients.edit',['id' => $client->id]) }}">
                                                 <span class='glyphicon glyphicon-pencil'></span>

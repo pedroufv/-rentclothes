@@ -11,6 +11,7 @@ class Rent extends Model
 
     protected $fillable = ['client_id', 'user_id', 'start_at', 'end_at'];
     protected $dates = ['start_at', 'end_at', 'created_at', 'updated_at', 'deleted_at'];
+    protected $appends = ['total'];
 
     public function client()
     {
@@ -25,5 +26,13 @@ class Rent extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        if($this->products->count() == 0)
+            return 0;
+
+        return $this->products->sum('price');
     }
 }

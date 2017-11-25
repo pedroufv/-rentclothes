@@ -36,7 +36,7 @@
                                         <td>{{ $rent->id  }}</td>
                                         <td>{{ $rent->client->name }}</td>
                                         <td>{{ $rent->user->name }}</td>
-                                        <td>R${{ number_format($rent->price, 2,",",".") }}</td>
+                                        <td>R${{ number_format($rent->total, 2,",",".") }}</td>
                                         <td>{{ $rent->start_at->format('d/m/Y') }}</td>
                                         <td>{{ $rent->end_at->format('d/m/Y') }}</td>
                                         <td>

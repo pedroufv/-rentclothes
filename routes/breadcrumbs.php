@@ -2,11 +2,12 @@
 
 // Home
 Breadcrumbs::register('home', function ($breadcrumbs) {
-    $breadcrumbs->push('Home', route('home'));
+    $breadcrumbs->push('Início', route('home'));
 });
 
 // Product List
 Breadcrumbs::register('products.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
     $breadcrumbs->push('Produtos', route('products.index'));
 });
 
@@ -30,6 +31,7 @@ Breadcrumbs::register('products.edit', function ($breadcrumbs, $product) {
 
 // Client List
 Breadcrumbs::register('clients.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
     $breadcrumbs->push('Clientes', route('clients.index'));
 });
 

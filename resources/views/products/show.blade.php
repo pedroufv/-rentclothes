@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="price" class="col-md-2 control-label">Preço</label>
-                            <div id="price">{{ money_format('%n', $product->price) }}</div>
+                            <div id="price">R${{ number_format($product->price, 2,",",".") }}</div>
                         </div>
                     </div>
                 </div>

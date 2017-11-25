@@ -18,6 +18,7 @@ class GenerateMenus
         \Menu::make('nav', function ($menu) {
             $menu->add('Início', 'home');
             $menu->add('Produtos', 'products');
+            $menu->add('Cientes', 'clients');
         });
 
         return $next($request);

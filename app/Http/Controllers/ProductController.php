@@ -37,7 +37,7 @@ class ProductController extends Controller
     {
         try {
             $product = Product::create($request->all());
-            return redirect()->route('products.show', ['id' => $product->id])->with('success', ('success_update'));
+            return redirect()->route('products.show', ['id' => $product->id])->with('success', ('created'));
         } catch (\Exception $e) {
             return redirect()->route('products.show', ['id' => $product->id])->with('error', $e->getMessage());
         }
@@ -76,7 +76,7 @@ class ProductController extends Controller
     {
         try {
             $product->update($request->all());
-            return redirect()->route('products.show', ['id' => $product->id])->with('success', ('success_update'));
+            return redirect()->route('products.show', ['id' => $product->id])->with('success', ('updated'));
         } catch (\Exception $e) {
             return redirect()->route('products.show', ['id' => $product->id])->with('error', $e->getMessage());
         }
@@ -90,6 +90,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        try {
+            $product->delete();
+            return redirect()->route('products.index')->with('success',('destroyed'));
+        } catch (\Exception $e) {
+            return redirect()->route('products.index')->with('error',$e->getMessage());
+        }
     }
 }

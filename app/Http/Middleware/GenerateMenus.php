@@ -19,6 +19,7 @@ class GenerateMenus
             $menu->add('Início', 'home');
             $menu->add('Produtos', 'products');
             $menu->add('Cientes', 'clients');
+            $menu->add('Aluguéis', 'rents');
         });
 
         return $next($request);

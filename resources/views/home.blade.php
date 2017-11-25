@@ -8,14 +8,6 @@
                     <div class="panel-heading">Início</div>
                     <div class="panel-body">
                         <div class="col-md-2">
-                            <a href="{{route('home')}}">
-                                <div class="well well-sm text-center">
-                                    <span style="font-size: 55px;" class="glyphicon glyphicon-home"></span>
-                                    <p>Início</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
                             <a href="{{route('products.index')}}">
                                 <div class="well well-sm text-center">
                                     <span style="font-size: 55px;" class="glyphicon glyphicon-briefcase"></span>
@@ -28,6 +20,14 @@
                                 <div class="well well-sm text-center">
                                     <span style="font-size: 55px;" class="glyphicon glyphicon-user"></span>
                                     <p>Clientes</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{route('rents.index')}}">
+                                <div class="well well-sm text-center">
+                                    <span style="font-size: 55px;" class="glyphicon glyphicon-shopping-cart"></span>
+                                    <p>Aluguéis</p>
                                 </div>
                             </a>
                         </div>

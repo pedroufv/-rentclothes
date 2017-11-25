@@ -14,19 +14,19 @@ Breadcrumbs::register('products.index', function ($breadcrumbs) {
 // Product Create
 Breadcrumbs::register('products.create', function ($breadcrumbs) {
     $breadcrumbs->parent('products.index');
-    $breadcrumbs->push('Produtos', route('products.create'));
+    $breadcrumbs->push('Criar', route('products.create'));
 });
 
 // Product Show
 Breadcrumbs::register('products.show', function ($breadcrumbs, $product) {
     $breadcrumbs->parent('products.index');
-    $breadcrumbs->push('Produtos', route('products.show', $product->id));
+    $breadcrumbs->push('Exibir', route('products.show', $product->id));
 });
 
 // Product Edit
 Breadcrumbs::register('products.edit', function ($breadcrumbs, $product) {
     $breadcrumbs->parent('products.index');
-    $breadcrumbs->push('Produtos', route('products.edit', $product->id));
+    $breadcrumbs->push('Editar', route('products.edit', $product->id));
 });
 
 // Client List
@@ -38,17 +38,41 @@ Breadcrumbs::register('clients.index', function ($breadcrumbs) {
 // Client Create
 Breadcrumbs::register('clients.create', function ($breadcrumbs) {
     $breadcrumbs->parent('clients.index');
-    $breadcrumbs->push('Clientes', route('clients.create'));
+    $breadcrumbs->push('Criar', route('clients.create'));
 });
 
 // Client Show
 Breadcrumbs::register('clients.show', function ($breadcrumbs, $client) {
     $breadcrumbs->parent('clients.index');
-    $breadcrumbs->push('Clientes', route('clients.show', $client->id));
+    $breadcrumbs->push('Exibir', route('clients.show', $client->id));
 });
 
 // Client Edit
 Breadcrumbs::register('clients.edit', function ($breadcrumbs, $client) {
     $breadcrumbs->parent('clients.index');
-    $breadcrumbs->push('Clientes', route('clients.edit', $client->id));
+    $breadcrumbs->push('Editar', route('clients.edit', $client->id));
+});
+
+// Rent List
+Breadcrumbs::register('rents.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Aluguéis', route('rents.index'));
+});
+
+// Rent Create
+Breadcrumbs::register('rents.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('rents.index');
+    $breadcrumbs->push('Criar', route('rents.create'));
+});
+
+// Rent Show
+Breadcrumbs::register('rents.show', function ($breadcrumbs, $rent) {
+    $breadcrumbs->parent('rents.index');
+    $breadcrumbs->push('Exibir', route('rents.show', $rent->id));
+});
+
+// Rent Edit
+Breadcrumbs::register('rents.edit', function ($breadcrumbs, $rent) {
+    $breadcrumbs->parent('rents.index');
+    $breadcrumbs->push('Editar', route('rents.edit', $rent->id));
 });

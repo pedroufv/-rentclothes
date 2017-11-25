@@ -38,6 +38,8 @@ if (token) {
 }
 
 require('sweetalert');
+require('bootstrap-datepicker');
+require('jquery-mask-plugin');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

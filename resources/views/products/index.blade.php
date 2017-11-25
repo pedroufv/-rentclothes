@@ -23,6 +23,7 @@
                                 <tr>
                                     <th style="width: 10px;">#</th>
                                     <th>Descricao</th>
+                                    <th>Preço</th>
                                     <th>Ações</th>
                                 </tr>
                                 </thead>
@@ -31,6 +32,7 @@
                                     <tr>
                                         <td>{{ $product->id  }}</td>
                                         <td>{{ $product->description }}</td>
+                                        <td>R${{ number_format($product->price, 2,",",".") }}</td>
                                         <td>
                                             <a href="{{  route('products.edit',['id' => $product->id]) }}">
                                                 <span class='glyphicon glyphicon-pencil'></span>
@@ -52,6 +54,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="col-md-6 col-md-offset-5">{{ $products->links() }}</div>
                         </div>
                     </div>
                 </div>

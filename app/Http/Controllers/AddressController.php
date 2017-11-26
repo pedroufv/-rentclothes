@@ -14,7 +14,9 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+      $addresss = Address::orderBy('id', 'desc')->paginate();
+
+      return view('addresss.index', compact('addresss'));
     }
 
     /**
@@ -24,7 +26,10 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+      $clients = Client::all();
+      $staffs = Staff::all();
+
+      return view('addresss.create', compact('clients', 'staffs'));
     }
 
     /**
@@ -35,7 +40,18 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      try {
+          // trata os dados da requisicao
+          $attributes = $request->all();
+          $attributes['user_id'] = Auth::user()->id;
+
+          // relaciona os produtos com o pedido
+          //falta relacionar o endereço com o cliente e funcionário
+
+          return redirect()->route('addresss.show', ['id' => $addresss->id])->with('success', ('created'));
+      } catch (\Exception $e) {
+          return redirect()->route('adrresss.show', ['id' => $addresss->id])->with('error', $e->getMessage());
+      }
     }
 
     /**
@@ -46,7 +62,9 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        //
+      $addresss = Address::all();
+
+      return view('addresss.show', compact('adrress', 'clients', 'staffs',));
     }
 
     /**
@@ -57,7 +75,10 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-        //
+      $clients = Client::all();
+      $staffs = Staff::all();
+
+      return view('adrresss.edit', compact('addresss', 'clients', 'staffs'));
     }
 
     /**
@@ -69,7 +90,11 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address)
     {
-        //
+      try {
+          return redirect()->route('addresss.show', ['id' => $address->id])->with('success', ('updated'));
+      } catch (\Exception $e) {
+          return redirect()->route('addresss.show', ['id' => $address->id])->with('error', $e->getMessage());
+      }
     }
 
     /**
@@ -80,6 +105,11 @@ class AddressController extends Controller
      */
     public function destroy(Address $address)
     {
-        //
+      try {
+          $address->delete();
+          return redirect()->route('addresss.index')->with('success',('destroyed'));
+      } catch (\Exception $e) {
+          return redirect()->route('addresss.index')->with('error',$e->getMessage());
+      }
     }
 }

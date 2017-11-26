@@ -14,25 +14,25 @@ class Rent extends Model
     protected $appends = ['total'];
 
     public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
+        {
+            return $this->belongsTo(Client::class);
+        }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
-    }
+        public function products()
+        {
+            return $this->belongsToMany(Product::class);
+        }
 
-    public function getTotalAttribute()
-    {
-        if($this->products->count() == 0)
-            return 0;
+        public function getTotalAttribute()
+        {
+            if($this->products->count() == 0)
+                return 0;
 
-        return $this->products->sum('price');
-    }
+            return $this->products->sum('price');
+        }
 }

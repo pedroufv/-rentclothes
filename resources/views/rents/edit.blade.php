@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group {{ $errors->has('products') ? 'has-error' : '' }}">
                             <div class="col-md-offset-1">
-                                <label for="required_documents">Produtos</label>
+                                <label for="products">Produtos</label>
                                 <p class="text-muted">Selecione produtos do pedido</p>
                                 <div id="products" class="col-md-12">
                                     @foreach($products as $product)

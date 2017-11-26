@@ -72,7 +72,9 @@ class RentController extends Controller
      */
     public function show(Rent $rent)
     {
-        return view('rents.show', compact('rent'));
+        $products = Product::all();
+
+        return view('rents.show', compact('rent', 'products'));
     }
 
     /**

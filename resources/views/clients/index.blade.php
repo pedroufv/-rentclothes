@@ -23,7 +23,7 @@
                                 <tr>
                                     <th style="width: 10px;">#</th>
                                     <th>Nome</th>
-                                    <th>Ações</th>
+                                    <th style="width: 85px;">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -32,6 +32,9 @@
                                         <td>{{ $client->id  }}</td>
                                         <td>{{ $client->name }}</td>
                                         <td>
+                                            <a href="{{ route('clients.show',['id' => $client->id]) }}">
+                                                <span class='glyphicon glyphicon-search'></span>
+                                            </a> |
                                             <a href="{{  route('clients.edit',['id' => $client->id]) }}">
                                                 <span class='glyphicon glyphicon-pencil'></span>
                                             </a> |

@@ -24,7 +24,7 @@
                                     <th style="width: 10px;">#</th>
                                     <th>Descricao</th>
                                     <th>Preço</th>
-                                    <th>Ações</th>
+                                    <th style="width: 85px;">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +34,9 @@
                                         <td>{{ $product->description }}</td>
                                         <td>R${{ number_format($product->price, 2,",",".") }}</td>
                                         <td>
+                                            <a href="{{ route('products.show',['id' => $product->id]) }}">
+                                                <span class='glyphicon glyphicon-search'></span>
+                                            </a> |
                                             <a href="{{  route('products.edit',['id' => $product->id]) }}">
                                                 <span class='glyphicon glyphicon-pencil'></span>
                                             </a> |

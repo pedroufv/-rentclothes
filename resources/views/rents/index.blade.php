@@ -27,7 +27,7 @@
                                     <th>Total</th>
                                     <th>Início</th>
                                     <th>Fim</th>
-                                    <th>Ações</th>
+                                    <th style="width: 85px;">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -40,6 +40,9 @@
                                         <td>{{ $rent->start_at->format('d/m/Y') }}</td>
                                         <td>{{ $rent->end_at->format('d/m/Y') }}</td>
                                         <td>
+                                            <a href="{{ route('rents.show',['id' => $rent->id]) }}">
+                                                <span class='glyphicon glyphicon-search'></span>
+                                            </a> |
                                             <a href="{{  route('rents.edit',['id' => $rent->id]) }}">
                                                 <span class='glyphicon glyphicon-pencil'></span>
                                             </a> |

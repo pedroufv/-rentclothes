@@ -68,9 +68,9 @@ class AddressUserController extends Controller
     {
       try {
           $address->update($request->all());
-          return redirect()->route('addresss.show', ['id' => $address->id])->with('success', ('updated'));
+          return redirect()->route('address_user.show', ['id' => $address->id])->with('success', ('updated'));
       } catch (\Exception $e) {
-          return redirect()->route('addresss.show', ['id' => $address->id])->with('error', $e->getMessage());
+          return redirect()->route('address_user.show', ['id' => $address->id])->with('error', $e->getMessage());
       }
     }
 
@@ -84,9 +84,9 @@ class AddressUserController extends Controller
     {
       try {
           $address->delete();
-          return redirect()->route('addresss.index')->with('success',('destroyed'));
+          return redirect()->route('profile')->with('success',('destroyed'));
       } catch (\Exception $e) {
-          return redirect()->route('addresss.index')->with('error',$e->getMessage());
+          return redirect()->route('profile')->with('error',$e->getMessage());
       }
     }
 }

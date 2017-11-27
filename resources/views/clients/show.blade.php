@@ -13,7 +13,6 @@
                     <div class="tab-content">
                         <!-- Personal data tab panes -->
                         <div role="tabpanel" class="tab-pane active" id="personal-data">
-                            <br>
                             <div class="panel panel-default">
                                 <div class="panel-heading">Dados de {{ $client->name }}</div>
                                 <div class="panel-body">

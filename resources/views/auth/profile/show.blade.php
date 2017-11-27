@@ -16,7 +16,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a href="">
+                                    <a href="{{ route('profile.edit') }}">
                                         <button type="button" class="btn btn-default">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
                                         </button>

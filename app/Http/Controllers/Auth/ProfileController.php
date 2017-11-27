@@ -17,29 +17,41 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        return view('auth.profile', compact('user'));
+        return view('auth.profile.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+
+        return view('auth.profile.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $user = Auth::user();
+
+            $attributes = $request->all();
+
+            if($request->has('password'))
+                $attributes['password'] = bcrypt($request->get('password'));
+
+            $user->update($attributes);
+            return redirect()->route('auth.profile.show', ['id' => $user->id])->with('success', ('updated'));
+        } catch (\Exception $e) {
+            return redirect()->route('auth.profile.show', ['id' => $user->id])->with('error', $e->getMessage());
+        }
     }
 }

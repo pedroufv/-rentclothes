@@ -84,6 +84,12 @@ Breadcrumbs::register('profile', function ($breadcrumbs) {
     $breadcrumbs->push('Perfil', route('profile'));
 });
 
+// Profile Edit
+Breadcrumbs::register('profile.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Editar', route('profile.edit'));
+});
+
 // Address User Create
 Breadcrumbs::register('address_user.create', function ($breadcrumbs) {
     $breadcrumbs->parent('profile');

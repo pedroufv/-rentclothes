@@ -22,6 +22,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/products', 'ProductController');
     Route::resource('/clients', 'ClientController');
     Route::resource('/rents', 'RentController');
+
     Route::get('/profile', 'Auth\ProfileController@index')->name('profile');
-    Route::resource('/address_user', 'AddressUserController');
+    Route::get('/profile/edit', 'Auth\ProfileController@edit')->name('profile.edit');
+    Route::patch('/profile/update', 'Auth\ProfileController@update')->name('profile.update');
+
+    Route::resource('/address_user', 'AddressUserController', ['except' => ['index']]);
 });

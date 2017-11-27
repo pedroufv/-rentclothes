@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Phone;
-use Illuminate\Http\Request;
+use App\Http\Requests\Phone as Request;
 use Illuminate\Support\Facades\Auth;
 
 class PhoneUserController extends Controller

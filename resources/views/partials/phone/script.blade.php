@@ -11,7 +11,7 @@
                 }
             };
 
-        $('#person_phone').mask(SPMaskBehavior, spOptions);
+        $('#number').mask(SPMaskBehavior, spOptions);
     });
 </script>
 @endpush

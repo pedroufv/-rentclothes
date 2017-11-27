@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class Product extends Request
+class Phone extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,7 @@ class Product extends Request
     public function rules()
     {
         return [
-            "description" => "required",
-            "size" => "required",
-            "price" => "required",
+            "number" => "required",
         ];
     }
 
@@ -32,15 +30,15 @@ class Product extends Request
     {
         $input = $this->all();
 
-        $input['price'] = $this->moeda($input['price']);
+        $input['number'] = $this->onlyDigits($input['number']);
 
         $this->replace($input);
 
         return $this->all();
     }
 
-    protected function moeda($value) {
-
-        return str_replace(',', '.', str_replace('.', '', $value));
+    public function onlyDigits($text)
+    {
+        return preg_replace('/\D/', '', $text);
     }
 }

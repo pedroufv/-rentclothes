@@ -20,7 +20,7 @@
             @foreach($client->phones as $phone)
                 <tr>
                     <td>{{ $phone->id }}</td>
-                    <td>{{ $phone->number }}</td>
+                    <td>{{ Text::formatPhone($phone->number) }}</td>
                     <td>
                         <a href="{{ route('client_phone.show', ['client' => $client->id, 'phone' => $phone->id]) }}">
                             <span class='glyphicon glyphicon-search'></span>

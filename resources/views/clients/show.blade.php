@@ -9,6 +9,7 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#personal-data" aria-controls="personal-data" role="tab" data-toggle="tab">Dados Pessoais</a></li>
                         <li role="presentation"><a href="#address-data" aria-controls="address-data" role="tab" data-toggle="tab">Endereços</a></li>
+                        <li role="presentation"><a href="#phone-data" aria-controls="address-data" role="tab" data-toggle="tab">Telefones</a></li>
                     </ul>
                     <div class="tab-content">
                         <!-- Personal data tab panes -->
@@ -43,6 +44,15 @@
                                 <div class="panel-heading">Endereços de {{ $client->name }}</div>
                                 <div class="panel-body">
                                     @include('address_client.index')
+                                </div>
+                            </div>
+                        </div>
+                        <!-- phone data tab panes -->
+                        <div role="tabpanel" class="tab-pane" id="phone-data">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Telefones de {{ $client->name }}</div>
+                                <div class="panel-body">
+                                    @include('client_phone.index')
                                 </div>
                             </div>
                         </div>

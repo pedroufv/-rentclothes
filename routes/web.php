@@ -36,4 +36,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/clients/{client}/addresses/{address}/edit', 'AddressClientController@edit')->name('address_client.edit');
     Route::patch('/clients/{client}/addresses/{address}', 'AddressClientController@update')->name('address_client.update');
     Route::delete('/clients/{client}/addresses/{address}', 'AddressClientController@destroy')->name('address_client.destroy');
+
+    Route::get('/clients/{client}/phones/create', 'ClientPhoneController@create')->name('client_phone.create');
+    Route::post('/clients/{client}/phones/store', 'ClientPhoneController@store')->name('client_phone.store');
+    Route::get('/clients/{client}/phones/{phone}', 'ClientPhoneController@show')->name('client_phone.show');
+    Route::get('/clients/{client}/phones/{phone}/edit', 'ClientPhoneController@edit')->name('client_phone.edit');
+    Route::patch('/clients/{client}/phones/{phone}', 'ClientPhoneController@update')->name('client_phone.update');
+    Route::delete('/clients/{client}/phones/{phone}', 'ClientPhoneController@destroy')->name('client_phone.destroy');
 });

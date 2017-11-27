@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Phone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PhoneController extends Controller
+class PhoneUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class PhoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('phone_user.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class PhoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      try {
+          $phone = Phone::create($request->all());
+          $phone->users()->attach(Auth::user()->id);
+          return redirect()->route('phone_user.show', ['id' => $phone->id])->with('success', ('created'));
+      } catch (\Exception $e) {
+          return redirect()->route('profile')->with('error', $e->getMessage());
+      }
     }
 
     /**
@@ -46,7 +53,7 @@ class PhoneController extends Controller
      */
     public function show(Phone $phone)
     {
-        //
+        return view('phone_user.show', compact('phone'));
     }
 
     /**
@@ -57,7 +64,7 @@ class PhoneController extends Controller
      */
     public function edit(Phone $phone)
     {
-        //
+        return view('phone_user.edit', compact('phone'));
     }
 
     /**
@@ -69,7 +76,12 @@ class PhoneController extends Controller
      */
     public function update(Request $request, Phone $phone)
     {
-        //
+      try {
+          $phone->update($request->all());
+          return redirect()->route('phone_user.show', ['id' => $phone->id])->with('success', ('updated'));
+      } catch (\Exception $e) {
+          return redirect()->route('phone_user.show', ['id' => $phone->id])->with('error', $e->getMessage());
+      }
     }
 
     /**
@@ -80,6 +92,11 @@ class PhoneController extends Controller
      */
     public function destroy(Phone $phone)
     {
-        //
+      try {
+          $phone->delete();
+          return redirect()->route('profile')->with('success',('destroyed'));
+      } catch (\Exception $e) {
+          return redirect()->route('profile')->with('error',$e->getMessage());
+      }
     }
 }

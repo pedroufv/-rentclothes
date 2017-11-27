@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
 {
-  use SoftDeletes;
-  protected $fillable = ['name', 'rg', 'cpf'];
-  protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    use SoftDeletes;
+    protected $fillable = ['name', 'rg', 'cpf'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    public function addresses()
+    {
+        return $this->belongsToMany(Address::class);
+    }
 }

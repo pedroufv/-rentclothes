@@ -30,5 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/address_user', 'AddressUserController', ['except' => ['index']]);
     Route::resource('/phone_user', 'PhoneUserController', ['except' => ['index']]);
 
-
+    Route::get('/clients/{client}/addresses/create', 'AddressClientController@create')->name('address_client.create');
+    Route::post('/clients/{client}/addresses/store', 'AddressClientController@store')->name('address_client.store');
+    Route::get('/clients/{client}/addresses/{address}', 'AddressClientController@show')->name('address_client.show');
+    Route::get('/clients/{client}/addresses/{address}/edit', 'AddressClientController@edit')->name('address_client.edit');
+    Route::patch('/clients/{client}/addresses/{address}', 'AddressClientController@update')->name('address_client.update');
+    Route::delete('/clients/{client}/addresses/{address}', 'AddressClientController@destroy')->name('address_client.destroy');
 });

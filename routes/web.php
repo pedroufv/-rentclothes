@@ -24,5 +24,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/rents', 'RentController');
     Route::get('/profile', 'Auth\ProfileController@index')->name('profile');
     Route::resource('/address_user', 'AddressUserController');
-    Route::model('address_user', \App\Address::class);
 });

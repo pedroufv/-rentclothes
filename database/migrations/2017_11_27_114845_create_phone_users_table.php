@@ -13,7 +13,7 @@ class CreatePhoneUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('phone_users', function (Blueprint $table) {
+        Schema::create('phone_user', function (Blueprint $table) {
             $table->integer('phone_id')->unsigned();
             $table->foreign('phone_id')->references('id')->on('phones');
             $table->integer('user_id')->unsigned();

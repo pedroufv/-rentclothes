@@ -15,4 +15,9 @@ class Client extends Model
     {
         return $this->belongsToMany(Address::class);
     }
+
+    public function phones()
+    {
+        return $this->belongsToMany(Phone::class);
+    }
 }

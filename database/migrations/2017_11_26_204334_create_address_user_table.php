@@ -14,9 +14,8 @@ class CreateAddressUserTable extends Migration
     public function up()
     {
         Schema::create('address_user', function (Blueprint $table) {
-          Schema::create('address_client', function (Blueprint $table) {
             $table->integer('address_id')->unsigned();
-            $table->foreign('address_id')->references('id')->on('address');
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
           });

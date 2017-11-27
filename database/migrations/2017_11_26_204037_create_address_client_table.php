@@ -15,7 +15,7 @@ class CreateAddressClientTable extends Migration
     {
         Schema::create('address_client', function (Blueprint $table) {
           $table->integer('address_id')->unsigned();
-          $table->foreign('address_id')->references('id')->on('address');
+          $table->foreign('address_id')->references('id')->on('addresses');
           $table->integer('client_id')->unsigned();
           $table->foreign('client_id')->references('id')->on('clients');
         });

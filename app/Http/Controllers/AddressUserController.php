@@ -4,21 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AddressController extends Controller
+class AddressUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      $addresss = Address::orderBy('id', 'desc')->paginate();
-
-      return view('addresss.index', compact('addresss'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,10 +15,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-      $clients = Client::all();
-      $staffs = Staff::all();
-
-      return view('addresss.create', compact('clients', 'staffs'));
+        return view('address_user.create');
     }
 
     /**
@@ -41,16 +27,11 @@ class AddressController extends Controller
     public function store(Request $request)
     {
       try {
-          // trata os dados da requisicao
-          $attributes = $request->all();
-          $attributes['user_id'] = Auth::user()->id;
-
-          // relaciona os produtos com o pedido
-          //falta relacionar o endereço com o cliente e funcionário
-
-          return redirect()->route('addresss.show', ['id' => $addresss->id])->with('success', ('created'));
+          $addresss = Address::create($request->all());
+          $addresss->users()->attach(Auth::user()->id);
+          return redirect()->route('address_user.show', ['id' => $addresss->id])->with('success', ('created'));
       } catch (\Exception $e) {
-          return redirect()->route('adrresss.show', ['id' => $addresss->id])->with('error', $e->getMessage());
+          return redirect()->route('profile')->with('error', $e->getMessage());
       }
     }
 
@@ -62,9 +43,7 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-      $addresss = Address::all();
-
-      return view('addresss.show', compact('adrress', 'clients', 'staffs',));
+        return view('address_user.show', compact('address'));
     }
 
     /**
@@ -75,10 +54,7 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-      $clients = Client::all();
-      $staffs = Staff::all();
-
-      return view('adrresss.edit', compact('addresss', 'clients', 'staffs'));
+        return view('address_user.edit', compact('address'));
     }
 
     /**
@@ -91,6 +67,7 @@ class AddressController extends Controller
     public function update(Request $request, Address $address)
     {
       try {
+          $address->update($request->all());
           return redirect()->route('addresss.show', ['id' => $address->id])->with('success', ('updated'));
       } catch (\Exception $e) {
           return redirect()->route('addresss.show', ['id' => $address->id])->with('error', $e->getMessage());

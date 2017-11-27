@@ -76,3 +76,28 @@ Breadcrumbs::register('rents.edit', function ($breadcrumbs, $rent) {
     $breadcrumbs->parent('rents.index');
     $breadcrumbs->push('Editar', route('rents.edit', $rent->id));
 });
+
+
+// Profile List
+Breadcrumbs::register('profile', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Perfil', route('profile'));
+});
+
+// Address User Create
+Breadcrumbs::register('address_user.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Criar', route('address_user.create'));
+});
+
+// Address User Show
+Breadcrumbs::register('address_user.show', function ($breadcrumbs, $rent) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Exibir', route('address_user.show', $rent->id));
+});
+
+// Address User Edit
+Breadcrumbs::register('address_user.edit', function ($breadcrumbs, $rent) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Editar', route('address_user.edit', $rent->id));
+});

@@ -28,4 +28,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::patch('/profile/update', 'Auth\ProfileController@update')->name('profile.update');
 
     Route::resource('/address_user', 'AddressUserController', ['except' => ['index']]);
+    Route::resource('/phone_user', 'PhoneUserController', ['except' => ['index']]);
+
+
 });

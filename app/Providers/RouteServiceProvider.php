@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::model('address_user', \App\Address::class);
+        Route::model('phone_user', \App\Phone::class);
     }
 
     /**

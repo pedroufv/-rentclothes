@@ -13,14 +13,14 @@
             <tr>
                 <th style="width: 10px;">#</th>
                 <th>Número</th>
-
                 <th style="width: 85px;">Ações</th>
             </tr>
             </thead>
             <tbody>
             @foreach($user->phones as $phone)
                 <tr>
-                   <td>{{ $phone->number }}</td>
+                    <td>{{ $phone->id }}</td>
+                    <td>{{ $phone->number }}</td>
                     <td>
                         <a href="{{ route('phone_user.show',['id' => $phone->id]) }}">
                             <span class='glyphicon glyphicon-search'></span>

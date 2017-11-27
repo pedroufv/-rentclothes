@@ -108,6 +108,24 @@ Breadcrumbs::register('address_user.edit', function ($breadcrumbs, $route) {
     $breadcrumbs->push('Editar', route('address_user.edit', $route->parameters));
 });
 
+// Phone User Create
+Breadcrumbs::register('phone_user.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Criar', route('phone_user.create'));
+});
+
+// Phone User Show
+Breadcrumbs::register('phone_user.show', function ($breadcrumbs, $route) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Exibir', route('phone_user.show', $route->parameters));
+});
+
+// Phone User Edit
+Breadcrumbs::register('phone_user.edit', function ($breadcrumbs, $route) {
+    $breadcrumbs->parent('profile');
+    $breadcrumbs->push('Editar', route('phone_user.edit', $route->parameters));
+});
+
 // Address Client Create
 Breadcrumbs::register('address_client.create', function ($breadcrumbs, $route) {
     $breadcrumbs->parent('clients.show', $route);

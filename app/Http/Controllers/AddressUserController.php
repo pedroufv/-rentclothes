@@ -27,9 +27,9 @@ class AddressUserController extends Controller
     public function store(Request $request)
     {
       try {
-          $addresss = Address::create($request->all());
-          $addresss->users()->attach(Auth::user()->id);
-          return redirect()->route('address_user.show', ['id' => $addresss->id])->with('success', ('created'));
+          $address = Address::create($request->all());
+          $address->users()->attach(Auth::user()->id);
+          return redirect()->route('address_user.show', ['id' => $address->id])->with('success', ('created'));
       } catch (\Exception $e) {
           return redirect()->route('profile')->with('error', $e->getMessage());
       }

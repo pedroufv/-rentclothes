@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <label for="products" class="col-md-2 control-label">Produtos</label>
                             <div id="products" class="col-md-12">
-                                @foreach($products as $product)
+                                @foreach($rent->products as $product)
                                     <label class="checkbox col-md-4">
                                         <input disabled type="checkbox" id="{{ $product->id }}" name="products[]" value="{{ $product->id }}" @if( (is_array(old('products')) AND in_array($product->id, old('products'))) OR in_array($product->id, $rent->products()->pluck('product_id')->toArray())) checked @endif>
                                         {{ $product->description }}

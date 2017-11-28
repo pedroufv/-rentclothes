@@ -18,9 +18,13 @@ class RentController extends Controller
      */
     public function index()
     {
-        $rents = Rent::orderBy('id', 'desc')->paginate();
+        $query = Rent::orderBy('id', 'desc');
 
-        return view('rents.index', compact('rents'));
+        $rents = $query->paginate();
+
+        $sql = $query->toSql();
+
+        return view('rents.index', compact('rents', 'sql'));
     }
 
     /**

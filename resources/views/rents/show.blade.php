@@ -24,19 +24,24 @@
                             <div id="price">R${{ number_format($rent->total, 2,",",".") }}</div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="products" class="col-md-2 control-label">Produtos</label>
-                            <div id="products" class="col-md-12">
-                                @foreach($rent->products as $product)
-                                    <label class="checkbox col-md-4">
-                                        <input disabled type="checkbox" id="{{ $product->id }}" name="products[]" value="{{ $product->id }}" @if( (is_array(old('products')) AND in_array($product->id, old('products'))) OR in_array($product->id, $rent->products()->pluck('product_id')->toArray())) checked @endif>
-                                        {{ $product->description }}
-                                    </label>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px;">#</th>
+                            <th>Descricao</th>
+                            <th>Preço</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($rent->products as $product)
+                            <tr>
+                                <td>{{ $product->id  }}</td>
+                                <td>{{ $product->description }}</td>
+                                <td>R${{ number_format($product->price, 2,",",".") }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

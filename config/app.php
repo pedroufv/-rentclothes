@@ -183,6 +183,7 @@ return [
          * Installed Packages
          */
         Lavary\Menu\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => Lavary\Menu\Facade::class,
         'Text' => App\Facades\Text::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

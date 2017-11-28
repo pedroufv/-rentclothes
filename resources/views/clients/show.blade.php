@@ -14,6 +14,7 @@
                     <div class="tab-content">
                         <!-- Personal data tab panes -->
                         <div role="tabpanel" class="tab-pane active" id="personal-data">
+                            <pre>{{ $client->toSql() . ' and "clients"."id" = ?' }}</pre>
                             <div class="panel panel-default">
                                 <div class="panel-heading">Dados de {{ $client->name }}</div>
                                 <div class="panel-body">
@@ -40,6 +41,7 @@
                         </div>
                         <!-- Address data tab panes -->
                         <div role="tabpanel" class="tab-pane" id="address-data">
+                            <pre>{{ $client->addresses()->toSql() }}</pre>
                             <div class="panel panel-default">
                                 <div class="panel-heading">Endereços de {{ $client->name }}</div>
                                 <div class="panel-body">
@@ -49,6 +51,7 @@
                         </div>
                         <!-- phone data tab panes -->
                         <div role="tabpanel" class="tab-pane" id="phone-data">
+                            <pre>{{ $client->phones()->toSql() }}</pre>
                             <div class="panel panel-default">
                                 <div class="panel-heading">Telefones de {{ $client->name }}</div>
                                 <div class="panel-body">

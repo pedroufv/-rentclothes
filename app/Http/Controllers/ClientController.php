@@ -18,7 +18,7 @@ class ClientController extends Controller
 
         $clients = $query->paginate();
 
-        $sql = $query->toSql();
+         $sql = $query->toSql();
 
         return view('clients.index', compact('clients', 'sql'));
     }

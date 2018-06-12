@@ -13,8 +13,7 @@
                     </ul>
                     <div class="tab-content">
                         <!-- Personal data tab panes -->
-                        <div role="tabpanel" class="tab-pane active" id="personal-data">
-                            <pre>{{ $user->toSql() .' where "users"."email" = ?' }}</pre>
+                        <div role="tabpanel" class="tab-pane active" id="personal-data">                            
                             <br>
                             <div class="row">
                                 <div class="col-md-12">
@@ -45,8 +44,7 @@
                             </div>
                         </div>
                         <!-- Address data tab panes -->
-                        <div role="tabpanel" class="tab-pane" id="address-data">
-                            <pre>{{ $user->addresses()->toSql() }}</pre>
+                        <div role="tabpanel" class="tab-pane" id="address-data">                         
                             <div class="panel panel-default">
                                 <div class="panel-heading">Endereços de {{ $user->name }}</div>
                                 <div class="panel-body">
@@ -55,8 +53,7 @@
                             </div>
                         </div>
                         <!-- phone data tab panes -->
-                        <div role="tabpanel" class="tab-pane" id="phone-data">
-                            <pre>{{ $user->phones()->toSql() }}</pre>
+                        <div role="tabpanel" class="tab-pane" id="phone-data">                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">Telefones de {{ $user->name }}</div>
                                 <div class="panel-body">

@@ -4,7 +4,6 @@
 
     <div class="container">
         <div class="row">
-            <pre>{{ $sql }}</pre>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Produtos</h3>

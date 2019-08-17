@@ -1,3 +1,8 @@
+## Projeto com cadastro de clientes, telefones, endereços, produtos e alugueis utilizando:
+- [Laravel Menu](https://packagist.org/packages/lavary/laravel-menu)
+- [Laravel Breadcrumbs](https://packagist.org/packages/davejamesmiller/laravel-breadcrumbs)
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
